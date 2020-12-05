@@ -1,0 +1,19 @@
+# @進捗どうですか
+#
+# -u -1922,16,-192;-1922,17,-191
+# Patch_ID: magma
+
+scoreboard players set HardcoreMode Settings 1
+
+clone -1907 16 -192 -1907 16 -192 -1904 16 -192 replace move
+setblock -1907 16 -192 chain_command_block 5 replace {auto:1,Command:scoreboard players test HardcoreMode Settings 1 *}
+setblock -1906 16 -192 chain_command_block 13 replace {auto:1,Command:scoreboard players tag @a[score_Deaths_min=1,score_HP=0] add dead}
+setblock -1905 16 -192 chain_command_block 13 replace {auto:1,Command:gamemode 3 @a[score_Deaths_min=1,score_HP=0]}
+
+setblock -1880 17 -191 chain_command_block 5 replace {auto:1,Command:scoreboard players test HardcoreMode Settings 1 1}
+setblock -1879 17 -191 chain_command_block 13 replace {auto:1,Command:tp @a[tag=dead] -1910 116 -136 0 0}
+setblock -1878 17 -191 chain_command_block 13 replace {auto:1,Command:gamemode 2 @a[tag=dead]}
+setblock -1877 17 -191 chain_command_block 13 replace {auto:1,Command:scoreboard players tag @a[tag=dead] remove dead}
+
+!success:[{"text":"Hardcore TUSB (ft.年末マルチ) v1.0 by mkm75","bold":true,"color":"dark_red"},{"text":"\n\nパッチの導入に成功しました","color":"green"}]
+!failure:{"text":"導入に失敗しました。既に競合するパッチが導入されている可能性があります。","color":"red","bold":true}
